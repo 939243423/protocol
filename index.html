@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合规与政策中心 - 岛上提醒 (Island Notifier)</title>
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.1);
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #0b0f19;
+        --bg-card: #151d2f;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent: #818cf8;
+        --accent-soft: rgba(129, 140, 248, 0.15);
+        --border: #1e293b;
+        --success: #34d399;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      color: #ffffff;
+      font-size: 32px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+      margin-bottom: 16px;
+    }
+
+    .badge-secure {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--success);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px -4px rgba(99, 102, 241, 0.15);
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .card-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .summary-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+      margin-bottom: 32px;
+    }
+
+    .summary-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .summary-card li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .summary-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="app-badge">🏝️</div>
+      <div class="badge-secure">✓ Apple App Store 官方规范合规认证</div>
+      <h1>法律合规与政策中心</h1>
+      <p class="subtitle">岛上提醒 (Island Notifier) · 官方政策中心</p>
+    </header>
+
+    <div class="grid">
+      <a href="privacy.html" class="card">
+        <div>
+          <div class="card-icon">🛡️</div>
+          <h2>隐私政策 <span>→</span></h2>
+          <p>详尽披露系统权限最小化调用、100% 端侧 Vision OCR 离线计算、零云端上报、零第三方广告/追踪 SDK 承诺与数据彻底销毁说明。</p>
+        </div>
+        <div class="card-link">阅读隐私政策全文 ➔</div>
+      </a>
+
+      <a href="terms.html" class="card">
+        <div>
+          <div class="card-icon">📜</div>
+          <h2>用户服务协议 <span>→</span></h2>
+          <p>包含终端用户许可协议 (EULA)、StoreKit 2 Pro 终身版买断权益保障、多设备购买恢复流程、免责声明及商标说明。</p>
+        </div>
+        <div class="card-link">阅读用户协议全文 ➔</div>
+      </a>
+    </div>
+
+    <div class="summary-card">
+      <h3>🔒 开发者端侧合规承诺摘要</h3>
+      <ul>
+        <li><strong>零云端服务器中转</strong>：所有取件短信、照片扫描均在 iPhone 硬件芯片上离线运算，无远程数据中转泄露风险。</li>
+        <li><strong>零第三方分析追踪</strong>：应用内不集成任何数据收集组件（如广告 SDK、埋点 SDK）。</li>
+        <li><strong>官方 StoreKit 2 支付</strong>：完全走苹果官方安全支付渠道，不触碰任何银行卡与财务账户。</li>
+        <li><strong>数据完全属于用户</strong>：沙盒数据随 App 卸载物理彻底销毁，提供一键本地清空机制。</li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Designed for iOS with Apple HIG</p>
+      <p>Copyright © 2026 岛上提醒 (Island Notifier). All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
