@@ -58,19 +58,6 @@
       object-fit: cover;
       display: inline-block;
     }
-    .app-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-      color: #ffffff;
-      font-size: 32px;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
-      margin-bottom: 16px;
-    }
 
     .badge-secure {
       display: inline-flex;
@@ -216,7 +203,7 @@
       <div><img src="app_icon.png" class="app-badge-img" alt="岛上提醒 Logo" /></div>
       <div class="badge-secure">✓ Apple App Store 官方规范合规认证</div>
       <h1>法律合规与政策中心</h1>
-      <p class="subtitle">岛上提醒 (Island Notifier) · 官方政策中心</p>
+      <p class="subtitle">更新日期：2026 年 10 月 15 日 · 岛上提醒 (Island Notifier) 官方政策中心</p>
     </header>
 
     <div class="grid">
@@ -224,7 +211,7 @@
         <div>
           <div class="card-icon">🛡️</div>
           <h2>隐私政策 <span>→</span></h2>
-          <p>详尽披露系统权限最小化调用、100% 端侧 Vision OCR 离线计算、零云端上报、零第三方广告/追踪 SDK 承诺与数据彻底销毁说明。</p>
+          <p>详尽披露系统权限最小化调用、100% 端侧 Vision OCR 离线计算、日历写入权限、iCloud 私有容器同步、零云端上报、零第三方广告/追踪 SDK 承诺与数据彻底销毁说明。</p>
         </div>
         <div class="card-link">阅读隐私政策全文 ➔</div>
       </a>
@@ -233,7 +220,7 @@
         <div>
           <div class="card-icon">📜</div>
           <h2>用户服务协议 <span>→</span></h2>
-          <p>包含终端用户许可协议 (EULA)、StoreKit 2 Pro 终身版买断权益保障、多设备购买恢复流程、免责声明及商标说明。</p>
+          <p>包含终端用户许可协议 (EULA)、StoreKit 2 Pro 终身版买断权益保障、多设备购买恢复流程、高校课表与地铁通勤免责声明及商标说明。</p>
         </div>
         <div class="card-link">阅读用户协议全文 ➔</div>
       </a>
@@ -242,10 +229,12 @@
     <div class="summary-card">
       <h3>🔒 开发者端侧合规承诺摘要</h3>
       <ul>
-        <li><strong>零云端服务器中转</strong>：所有取件短信、照片扫描均在 iPhone 硬件芯片上离线运算，无远程数据中转泄露风险。</li>
-        <li><strong>零第三方分析追踪</strong>：应用内不集成任何数据收集组件（如广告 SDK、埋点 SDK）。</li>
+        <li><strong>零云端服务器中转</strong>：所有取件短信、照片扫描与课表通勤运算均在 iPhone 硬件芯片上离线完成，无远程数据外泄风险。</li>
+        <li><strong>零第三方分析追踪</strong>：应用内不集成任何数据收集组件（无广告 SDK、无埋点 SDK）。</li>
+        <li><strong>日历权限最小化范围</strong>：仅用于将用户录入的学期课程节次写入系统日历，严禁读取或遍历用户设备既有的任何私人日程。</li>
+        <li><strong>iCloud 原生私有保护</strong>：Pro 同步数据留存于用户自有的 Apple iCloud 私有数据容器，传输全程端对端加密，开发者无法接触。</li>
         <li><strong>官方 StoreKit 2 支付</strong>：完全走苹果官方安全支付渠道，不触碰任何银行卡与财务账户。</li>
-        <li><strong>数据完全属于用户</strong>：沙盒数据随 App 卸载物理彻底销毁，提供一键本地清空机制。</li>
+        <li><strong>数据完全属于用户</strong>：沙盒数据随 App 卸载物理彻底销毁，提供一键本地清空与重置机制。</li>
         <li><strong>开发者合规联系</strong>：如需隐私咨询或用户支持，请致信 <a href="mailto:ruohui49@gmail.com" style="color: var(--accent);">ruohui49@gmail.com</a>。</li>
       </ul>
     </div>
